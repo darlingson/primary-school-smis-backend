@@ -15,6 +15,16 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
   });
 
 const app = express();
+
+//importing the routes
+const authRoutes = require('./routes/auth');
+const routes = require('./routes/routes');
+
+// Use the routes
+app.use('/auth', authRoutes);
+app.use('/api', routes);
+
+
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
