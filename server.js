@@ -1,9 +1,9 @@
-require('dotenv').config();
+require('dotenv').config({ path: './config.env' });
 const express = require('express');
 const mongoose = require('mongoose');
 
 // Use the MONGODB_URI environmental variable
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.ATLAS_URI;
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
