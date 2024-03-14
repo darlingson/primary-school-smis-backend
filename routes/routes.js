@@ -62,6 +62,41 @@ router.delete('/student/:id', (req, res) => {
     })
 })
 
-
+//crud routes for class
+router.get('/class', (req, res) => {
+    res.send({
+        'message':"classes retrieved"
+    })
+})
+router.get('/class/:id', (req, res) => {
+    res.send({
+        'message':"class with id retrieved"
+    })
+})
+router.get('/class/:id/students', (req, res) => {
+    res.send({
+        'message':"student from class with id retrieved"
+    })
+})
+router.get('/class/:id/subjects', (req, res) => {
+    res.send({
+        'message':"subjects from class with id retrieved"
+    })
+})
+router.post('/class', (req, res) => {
+    res.send({
+        'message':"class added"
+    })
+})
+router.put('/class/:id', (req, res) => {
+    res.send({
+        'message':"class with id updated"
+    })
+})
+router.delete('/class/:id', (req, res) => {
+    res.send({
+        'message':"class with id deleted"
+    })
+})
 
 module.exports = router;
