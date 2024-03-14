@@ -35,8 +35,32 @@ router.delete('/school/:id', (req, res) => {
 })
 
 
-
-
+//crud routes for student
+router.get('/student', (req, res) => {
+    res.send({
+        'message':"students retrieved"
+    })
+})
+router.get('/student/:id', (req, res) => {
+    res.send({
+        'message':"student with id retrieved"
+    })
+})
+router.post('/student', (req, res) => {
+    res.send({
+        'message':"student added"
+    })
+})
+router.put('/student/:id', (req, res) => {
+    res.send({
+        'message':"student with id updated"
+    })
+})
+router.delete('/student/:id', (req, res) => {
+    res.send({
+        'message':"student with id deleted"
+    })
+})
 
 
 
