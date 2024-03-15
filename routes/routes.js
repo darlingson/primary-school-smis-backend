@@ -99,4 +99,31 @@ router.delete('/class/:id', (req, res) => {
     })
 })
 
+//grade routes
+router.post('student/:id/subject/:subject_id/grade', (req, res) => {
+    res.send({
+        'message':"grade added"
+    })
+})
+router.put('student/:id/subject/:subject_id/grade/:grade_id', (req, res) => {
+    res.send({
+        'message':"grade with id updated"
+    })
+})
+router.delete('student/:id/subject/:subject_id/grade/:grade_id', (req, res) => {
+    res.send({
+        'message':"grade with id deleted"
+    })
+})
+router.get('student/:id/grades', (req, res) => {
+    res.send({
+        'message':"grades retrieved"
+    })
+})
+router.get('student/:id/grades/:subject_id', (req, res) => {
+    res.send({
+        'message':"grades retrieved"
+    })
+})
+
 module.exports = router;
