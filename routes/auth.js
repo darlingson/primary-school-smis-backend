@@ -27,6 +27,14 @@ router.get('/reset-password', (req, res) => {
         'message':"reset-password"
     })
 })
-
-
+router.post('/change-password', (req, res) => {
+    res.send({
+        'message':"change-password"
+    })
+})
+router.post('/register', (req, res) => {
+    res.send({
+        'message':"register"
+    })
+})
 module.exports = router;
