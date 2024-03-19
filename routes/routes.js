@@ -126,4 +126,28 @@ router.get('student/:id/grades/:subject_id', (req, res) => {
     })
 })
 
+//system admin route
+
+
+//school admit routes
+router.get('/school-admins/', (req, res) => {
+    res.send({
+        'message':"school admins retrieved"
+    })
+})
+router.get('school-admins/:id', (req, res) => {
+    res.send({
+        'message':"school admin with id retrieved"
+    })
+})
+router.post('school-admins/', (req, res) => {
+    res.send({
+        'message':"school admin added"
+    })
+})
+router.post('school-admins/:id', (req, res) => {
+    res.send({
+        'message':"admin added school successfully"
+    })
+})
 module.exports = router;
