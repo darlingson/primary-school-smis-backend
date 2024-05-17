@@ -1,40 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
-router.post('/login', (req, res) => {
-    res.send({
-        'message':"login"
-    });
+const createUser = require("../controllers/signupController");
+const login = require("../controllers/loginController");
+router.post("/signup", createUser);
+router.post("/login", login);
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  res.json({ message: "Logged out" });
 });
-
-router.post('/check-status', (req, res) => {
-    res.send({
-        'message':"status check"
-    });
-});
-router.post('/logout', (req, res) => {
-    res.send({
-        'message':"logout"
-    });
-});
-router.post('/forgot-password', (req, res) => {
-    res.send({
-        'message':"forgot-password"
-    })
-})
-router.get('/reset-password', (req, res) => {
-    res.send({
-        'message':"reset-password"
-    })
-})
-router.post('/change-password', (req, res) => {
-    res.send({
-        'message':"change-password"
-    })
-})
-router.post('/register', (req, res) => {
-    res.send({
-        'message':"register"
-    })
-})
 module.exports = router;

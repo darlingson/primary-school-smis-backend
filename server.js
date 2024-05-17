@@ -2,6 +2,10 @@ require('dotenv').config({ path: './config.env' });
 const express = require('express');
 const mongoose = require('mongoose');
 
+var User = require('./models/userModel');
+var bodyParser = require('body-parser');
+var jsonwebtoken = require('jsonwebtoken');
+
 // Use the MONGODB_URI environmental variable
 const MONGODB_URI = process.env.ATLAS_URI;
 
@@ -16,14 +20,17 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //importing the routes
 const authRoutes = require('./routes/auth');
 const routes = require('./routes/routes');
 
-// Use the routes
+
+
 app.use('/auth', authRoutes);
 app.use('/api', routes);
-
 
 const PORT = process.env.PORT || 5000;
 
