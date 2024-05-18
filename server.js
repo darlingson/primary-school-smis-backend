@@ -29,21 +29,21 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-  // Set CORS headers
+  // Setting CORS headers
   res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
 
-  // Pass to next layer of middleware
+  // Passing to next layer of middleware
   next();
 });
+
 //importing the routes
 const authRoutes = require('./routes/auth');
 const routes = require('./routes/routes');
 
-
-
+//defining prefixes to the routes
 app.use('/auth', authRoutes);
 app.use('/api', routes);
 

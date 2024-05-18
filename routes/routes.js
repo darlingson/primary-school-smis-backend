@@ -1,4 +1,5 @@
 const express = require('express');
+const authenticateToken = require('../middleware/verifyToken');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -130,7 +131,7 @@ router.get('student/:id/grades/:subject_id', (req, res) => {
 
 
 //school admit routes
-router.get('/school-admins/', (req, res) => {
+router.get('/school-admins/',authenticateToken, (req, res) => {
     res.send({
         'message':"school admins retrieved"
     })

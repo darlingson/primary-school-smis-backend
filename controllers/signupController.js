@@ -10,7 +10,8 @@ const createUser = async (req, res) => {
         req.body.email &&
         req.body.password &&
         req.body.name &&
-        req.body.username
+        req.body.username &&
+        req.body.role
       )
     ) {
       res.status(400).send("All input is required");
@@ -28,6 +29,7 @@ const createUser = async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
+      role: req.body.role
     });
     
     const user = await newUser.save();
@@ -36,10 +38,10 @@ const createUser = async (req, res) => {
     const token = createSecretToken(userIdString);
 
     res.cookie("token", token, {
-      path: "/", // Cookie is accessible from all paths
-      expires: new Date(Date.now() + 86400000), // Cookie expires in 1 day
-      secure: true, // Cookie will only be sent over HTTPS
-      httpOnly: true, // Cookie cannot be accessed via client-side scripts
+      path: "/", 
+      expires: new Date(Date.now() + 86400000),
+      secure: true,
+      httpOnly: true,
       sameSite: "None",
     });
 
