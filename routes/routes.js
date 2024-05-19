@@ -3,6 +3,7 @@ const authenticateToken = require('../middleware/verifyToken');
 const router = express.Router();
 
 const { addSchool, getSchools, getSchool, getSchoolByLocation } = require('../controllers/SchoolController');
+const { getSchoolAdmins, getSchoolAdmin, addSchoolAdmin, geSchoolAdminBySchool } = require('../controllers/SchoolAdminController');
 router.get('/', (req, res) => {
     res.send({
         'message': "Hello"
@@ -120,23 +121,11 @@ router.get('student/:id/grades/:subject_id', (req, res) => {
 //system admin route
 
 
-//school admit routes
-router.get('/school-admins/', authenticateToken, (req, res) => {
-    res.send({
-        'message': "school admins retrieved"
-    })
-})
-router.get('school-admins/:id', (req, res) => {
-    res.send({
-        'message': "school admin with id retrieved"
-    })
-})
-router.post('school-admins/', (req, res) => {
-    res.send({
-        'message': "school admin added"
-    })
-})
-router.post('school-admins/:id', (req, res) => {
+//school admin routes
+router.get('/school-admins/', authenticateToken, getSchoolAdmins)
+router.get('/school-admins/:id', getSchoolAdmin)
+router.post('/school-admins/', addSchoolAdmin)
+router.post('/school-admins/:id', (req, res) => {
     res.send({
         'message': "admin added school successfully"
     })
