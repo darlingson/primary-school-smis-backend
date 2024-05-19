@@ -2,7 +2,7 @@ const express = require('express');
 const authenticateToken = require('../middleware/verifyToken');
 const router = express.Router();
 
-const { addSchool } = require('../controllers/SchoolController');
+const { addSchool, getSchools, getSchool, getSchoolByLocation } = require('../controllers/SchoolController');
 router.get('/', (req, res) => {
     res.send({
         'message': "Hello"
@@ -10,17 +10,10 @@ router.get('/', (req, res) => {
 });
 
 //crud routes for school
-router.get('/school', (req, res) => {
-    res.send({
-        'message': "schools retrieved"
-    })
-})
-router.get('/school/:id', (req, res) => {
-    res.send({
-        'message': "school with id retrieved"
-    })
-})
+router.get('/school', getSchools)
+router.get('/school/:id', getSchool)
 router.post('/school', addSchool)
+router.get('/school/:location', getSchoolByLocation)
 router.put('/school/:id', (req, res) => {
     res.send({
         'message': "school with id updated"

@@ -61,8 +61,6 @@ const getSchool = async (req, res) => {
 
 const getSchoolByLocation = async (req, res) => {
     try {
-        //the locations should not match exactly, it should just be like the given location
-
         const schools = await School.find({ location: { $regex: req.params.location, $options: "i" } });
         res.status(200).json(schools);
     } catch (err) {
@@ -70,4 +68,4 @@ const getSchoolByLocation = async (req, res) => {
     }
 }
 
-module.exports = { addSchool, getSchools }
+module.exports = { addSchool, getSchool, getSchools, getSchoolByLocation }
