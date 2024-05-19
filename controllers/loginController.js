@@ -15,7 +15,7 @@ const login = async (req, res) => {
   if (!(user && (await bcrypt.compare(password, user.password)))) {
     return res.status(404).json({ message: "Invalid credentials" });
   }
-  const token = createSecretToken(user._id);
+  const token = createSecretToken(user._id,email);
   console.log(token);
   res.cookie("token", token, {
     domain: process.env.frontend_url,

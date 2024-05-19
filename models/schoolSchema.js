@@ -1,27 +1,27 @@
 const mongoose = require('mongoose');
 
 const schoolSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: true
     },
-    type:{
+    type: {
         type: String,
         required: true
     },
-    address:{
+    address: {
         type: String,
         required: true
     },
-    location:{
+    location: {
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true
     },
-    phone:{
+    phone: {
         type: String,
         required: true
     },
@@ -34,5 +34,5 @@ const schoolSchema = new mongoose.Schema({
         default: Date.now
     }
 });
-const SchoolSchema = mongoose.model('SchoolAdmin', schoolSchema);
-module.exports = SchoolSchema;
+const School = mongoose.model('School', schoolSchema);
+module.exports = School;

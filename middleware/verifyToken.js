@@ -10,7 +10,6 @@ const authenticateToken = (req, res, next) => {
   
     try {
       const decoded = jwt.verify(token, process.env.TOKEN_KEY);
-    //   console.log(jwt.verify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDg3NzAxYjViZGM4YmExODI5NjA3OSIsImlhdCI6MTcxNjAyNTY2NywiZXhwIjoxNzE2Mjg0ODY3fQ.Fb0ZmDIbTfi7jespHQDtSRP_3L7lVCkD6D_UB8etsYg",process.env.TOKEN_KEY))
       res.locals.token = token;
       res.locals.decoded = decoded;
       next();
