@@ -6,6 +6,7 @@ const { addSchool, getSchools, getSchool, getSchoolByLocation } = require('../co
 const { getSchoolAdmins, getSchoolAdmin, addSchoolAdmin, geSchoolAdminBySchool } = require('../controllers/SchoolAdminController');
 const { addClass, getClasses, getClass, updateClass, deleteClass } = require('../controllers/ClassController');
 const {addSubject, getSubjects, getSubject, updateSubject, deleteSubject} = require('../controllers/SubjectController');
+const { addTeacher, getTeachers, getTeacher, updateTeacher, deleteTeacher } = require('../controllers/TeacherController');
 router.get('/', (req, res) => {
     res.send({
         'message': "Hello"
@@ -119,5 +120,12 @@ router.get('/subjects', getSubjects)
 router.get('/subject/:id', getSubject)
 router.put('/subject/:id', updateSubject)
 router.delete('/subject/:id', deleteSubject)
+
+//teacher routes
+router.post('/teachers', addTeacher)
+router.get('/teachers', getTeacher)
+router.get('/teachers/:id', getTeacher)
+router.put('/teachers/:id', updateTeacher)
+router.delete('/teachers/:id', deleteTeacher)
 
 module.exports = router;

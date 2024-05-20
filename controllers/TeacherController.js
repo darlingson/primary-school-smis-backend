@@ -6,6 +6,9 @@ module.exports = {
         res.json(teacher);
     },
     addTeacher: async (req, res) => {
+        const {subjects,school} = req.body
+        const subjectIDsArray = subjects.split(",");
+        const subjectsArray = subjectIDsArray.map(subject => subject.trim());
         try {
             const newTeacher = new Teacher({
                 teacher_id: req.body.teacher_id,
@@ -13,8 +16,9 @@ module.exports = {
                 full_name: req.body.full_name,
                 dob: req.body.dob,
                 phone: req.body.phone,
+                school: school,
                 specialty: req.body.specialty,
-                subjects: req.body.subjects
+                subjects: subjectsArray
             });
             await newTeacher.save();
             res.status(201).json({ message: "Teacher added successfully" });

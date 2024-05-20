@@ -6,6 +6,8 @@ const teacherSchema = new mongoose.Schema({
     full_name: { type: String, required: true },
     dob: String,
     phone: String,
+    //the teacher should be linked to a school
+    school: { type: mongoose.Schema.Types.ObjectId, ref: "School" },
     specialty: String,
     //the teacher should be linked to a list of subjects they are responsible for teaching, each subject should have a class for differentiation
     subjects :[
