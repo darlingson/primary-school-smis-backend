@@ -4,6 +4,7 @@ const router = express.Router();
 
 const { addSchool, getSchools, getSchool, getSchoolByLocation } = require('../controllers/SchoolController');
 const { getSchoolAdmins, getSchoolAdmin, addSchoolAdmin, geSchoolAdminBySchool } = require('../controllers/SchoolAdminController');
+const { addClass, getClasses, getClass, updateClass, deleteClass } = require('../controllers/ClassController');
 router.get('/', (req, res) => {
     res.send({
         'message': "Hello"
@@ -55,16 +56,8 @@ router.delete('/student/:id', (req, res) => {
 })
 
 //crud routes for class
-router.get('/class', (req, res) => {
-    res.send({
-        'message': "classes retrieved"
-    })
-})
-router.get('/class/:id', (req, res) => {
-    res.send({
-        'message': "class with id retrieved"
-    })
-})
+router.get('/class',getClasses )
+router.get('/class/:id', getClass)
 router.get('/class/:id/students', (req, res) => {
     res.send({
         'message': "student from class with id retrieved"
@@ -75,21 +68,9 @@ router.get('/class/:id/subjects', (req, res) => {
         'message': "subjects from class with id retrieved"
     })
 })
-router.post('/class', (req, res) => {
-    res.send({
-        'message': "class added"
-    })
-})
-router.put('/class/:id', (req, res) => {
-    res.send({
-        'message': "class with id updated"
-    })
-})
-router.delete('/class/:id', (req, res) => {
-    res.send({
-        'message': "class with id deleted"
-    })
-})
+router.post('/class', addClass)
+router.put('/class/:id', updateClass)
+router.delete('/class/:id', deleteClass)
 
 //grade routes
 router.post('student/:id/subject/:subject_id/grade', (req, res) => {
