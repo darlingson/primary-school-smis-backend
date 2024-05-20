@@ -3,14 +3,16 @@ const Class = require("../models/classSchema");
 const Teacher = require("../models/teacherSchema");
 module.exports = {
     addSubject: async (req, res) => {
-        const { subject_id, subject_name, description, class_id, teacher_id, syllabus, textbooks } = req.body;
+        const { subject_id, subject_name, description,  syllabus, textbooks } = req.body;
+        const textBooksArray = textbooks.split(",");
+        const bookArray = textBooksArray.map(book => book.trim());
         try {
             const newSubject = new Subject({
                 subject_id,
                 subject_name,
                 description,
                 syllabus,
-                textbooks
+                textbooks: textBooksArray
             });
             const savedSubject = await newSubject.save();
             res.status(200).json({ message: "Subject Added", savedSubject });

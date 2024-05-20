@@ -5,6 +5,7 @@ const router = express.Router();
 const { addSchool, getSchools, getSchool, getSchoolByLocation } = require('../controllers/SchoolController');
 const { getSchoolAdmins, getSchoolAdmin, addSchoolAdmin, geSchoolAdminBySchool } = require('../controllers/SchoolAdminController');
 const { addClass, getClasses, getClass, updateClass, deleteClass } = require('../controllers/ClassController');
+const {addSubject, getSubjects, getSubject, updateSubject, deleteSubject} = require('../controllers/SubjectController');
 router.get('/', (req, res) => {
     res.send({
         'message': "Hello"
@@ -111,4 +112,12 @@ router.post('/school-admins/:id', (req, res) => {
         'message': "admin added school successfully"
     })
 })
+
+//subject routes
+router.post('/subjects', addSubject)
+router.get('/subjects', getSubjects)
+router.get('/subject/:id', getSubject)
+router.put('/subject/:id', updateSubject)
+router.delete('/subject/:id', deleteSubject)
+
 module.exports = router;
