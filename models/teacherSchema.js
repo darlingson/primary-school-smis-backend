@@ -7,6 +7,14 @@ const teacherSchema = new mongoose.Schema({
     dob: String,
     phone: String,
     specialty: String,
+    //the teacher should be linked to a list of subjects they are responsible for teaching, each subject should have a class for differentiation
+    subjects :[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Subject"
+        }
+    ]
+    
 });
 
 const Teacher = mongoose.model("Teacher", teacherSchema);
