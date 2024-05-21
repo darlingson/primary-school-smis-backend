@@ -2,12 +2,23 @@ const Class = require("../models/classSchema");
 
 module.exports = {
     addClass: async (req, res) => {
+        if (!req.body.ClassId) {
+            res.status(400).json({ "message": "class ID is required" });
+        } else if (!req.body.ClassName) {
+            res.status(400).json({ "message": "class name is required" });
+        } else if (!req.body.SchoolID) {
+            res.status(400).json({ "message": "school ID is required" });
+        } else if (!req.body.Subjects) {
+            res.status(400).json({ "message": "subject list is required" });
+        }
+        let subjectsarray = req.body.Subjects.split(",");
+        subjectsarray = subjectsarray.map((subject) => subject.trim());
         try {
             const newClass = new Class({
                 ClassId: req.body.ClassId,
                 ClassName: req.body.ClassName,
-                ClassTeacher: req.body.ClassTeacher,
                 SchoolID: req.body.SchoolID,
+                Subjects: subjectsarray,
             });
             await newClass.save();
             res.status(201).json({ message: "Class added successfully" });

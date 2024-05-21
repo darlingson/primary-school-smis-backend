@@ -60,6 +60,10 @@ router.delete('/student/:id', (req, res) => {
 //crud routes for class
 router.get('/class',getClasses )
 router.get('/class/:id', getClass)
+router.post('/class', addClass)
+router.put('/class/:id', updateClass)
+router.delete('/class/:id', deleteClass)
+
 router.get('/class/:id/students', (req, res) => {
     res.send({
         'message': "student from class with id retrieved"
@@ -70,9 +74,7 @@ router.get('/class/:id/subjects', (req, res) => {
         'message': "subjects from class with id retrieved"
     })
 })
-router.post('/class', addClass)
-router.put('/class/:id', updateClass)
-router.delete('/class/:id', deleteClass)
+
 
 //grade routes
 router.post('student/:id/subject/:subject_id/grade', (req, res) => {
