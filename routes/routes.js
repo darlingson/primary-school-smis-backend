@@ -7,6 +7,7 @@ const { getSchoolAdmins, getSchoolAdmin, addSchoolAdmin, geSchoolAdminBySchool }
 const { addClass, getClasses, getClass, updateClass, deleteClass } = require('../controllers/ClassController');
 const {addSubject, getSubjects, getSubject, updateSubject, deleteSubject} = require('../controllers/SubjectController');
 const { addTeacher, getTeachers, getTeacher, updateTeacher, deleteTeacher } = require('../controllers/TeacherController');
+const { addStudent, getStudents, getStudent, updateStudent, deleteStudent } = require('../controllers/StudentController');
 router.get('/', (req, res) => {
     res.send({
         'message': "Hello"
@@ -31,31 +32,11 @@ router.delete('/school/:id', (req, res) => {
 
 
 //crud routes for student
-router.get('/student', (req, res) => {
-    res.send({
-        'message': "students retrieved"
-    })
-})
-router.get('/student/:id', (req, res) => {
-    res.send({
-        'message': "student with id retrieved"
-    })
-})
-router.post('/student', (req, res) => {
-    res.send({
-        'message': "student added"
-    })
-})
-router.put('/student/:id', (req, res) => {
-    res.send({
-        'message': "student with id updated"
-    })
-})
-router.delete('/student/:id', (req, res) => {
-    res.send({
-        'message': "student with id deleted"
-    })
-})
+router.get('/student', getStudents)
+router.get('/student/:id', getStudent)
+router.post('/student', addStudent)
+router.put('/student/:id', updateStudent)
+router.delete('/student/:id', deleteStudent)
 
 //crud routes for class
 router.get('/class',getClasses )
